@@ -1,0 +1,32 @@
+#include <iostream>
+#include <cmath>
+#include "function.h"
+using namespace std;
+
+int main() {
+  double dropRate;
+
+  bool repeat{ true };
+do
+{
+
+  cout << "\nEnter the drop rate (percentage, e.g., 25 for 25%): ";
+  cin >> dropRate;
+
+  if (dropRate <= 0 || dropRate > 100){
+    cout << "\nInvalid drop rate. Please enter a value between 0 and 100. \n";
+    return 1;
+}
+  double dropChance =
+  calculateDropChance(dropRate);
+  double chanceOnceIn10 =
+  calculateChanceOnceIn10(dropRate);
+
+  cout << "\n This is a 1 in " << round (dropChance) << " chance that the item will drop.\n";
+  cout << "\nThere is a " << chanceOnceIn10 * 100 << "% chance to get the item at least once in 10 runs.\n";
+
+  cout << "\nContinue: type 1 or to exit type 0: ";\
+  cin >> repeat;
+} while (repeat);
+  return 0;
+    }
